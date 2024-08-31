@@ -44,7 +44,7 @@ def main():
         for asteroid in asteroids:
             for shot in shots:
                 if shot.collision_detection(asteroid):
-                    asteroid.kill()
+                    asteroid.split()
                     shot.kill()
             if asteroid.collision_detection(player_ship):
                 print("Game over!")

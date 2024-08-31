@@ -1,10 +1,14 @@
 import pygame
+import random
 
 
 from circleshape import CircleShape
 from constants import (
     ASTEROID_COLOR,
     ASTEROID_LINE_WIDTH,
+    ASTEROID_MIN_RADIUS,
+    ASTEROID_MAX_RADIUS,
+    ASTEROID_SPLIT_VELOCITY_MULTIPLIER,
 )
 
 
@@ -19,3 +23,20 @@ class Asteroid(CircleShape):
 
     def update(self, dt):
         self.position += self.velocity * dt
+
+    def split(self):
+        # Asteroid getting should should always disappear
+        self.kill()
+        # If we have the smallest asteroid, it is simply destroyed
+        if self.radius <= ASTEROID_MIN_RADIUS:
+            return
+
+        # However if it was bigger, we will spawn new ones!
+        random_angle = random.uniform(20, 50)
+        asteroid_vector_1 = self.velocity.rotate(random_angle)
+        asteroid_vector_2 = self.velocity.rotate(-random_angle)
+        radius = self.radius - ASTEROID_MIN_RADIUS
+        asteroid_one = Asteroid(self.position.x, self.position.y, radius)
+        asteroid_one.velocity = asteroid_vector_1 * ASTEROID_SPLIT_VELOCITY_MULTIPLIER
+        asteroid_two = Asteroid(self.position.x, self.position.y, radius)
+        asteroid_two.velocity = asteroid_vector_2 * ASTEROID_SPLIT_VELOCITY_MULTIPLIER
