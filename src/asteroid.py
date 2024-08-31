@@ -7,7 +7,6 @@ from constants import (
     ASTEROID_COLOR,
     ASTEROID_LINE_WIDTH,
     ASTEROID_MIN_RADIUS,
-    ASTEROID_MAX_RADIUS,
     ASTEROID_SPLIT_VELOCITY_MULTIPLIER,
 )
 
@@ -17,14 +16,17 @@ class Asteroid(CircleShape):
         super().__init__(x, y, radius)
 
     def draw(self, screen: object):
+        """Draws the asteroid object on the screen"""
         pygame.draw.circle(
             screen, ASTEROID_COLOR, self.position, self.radius, ASTEROID_LINE_WIDTH
         )
 
-    def update(self, dt):
+    def update(self, dt: int):
+        """Updates asteroid position during game loop"""
         self.position += self.velocity * dt
 
     def split(self):
+        """Handles asteroid object destruction and spawning of smaller asteroids when player shoots one down."""
         # Asteroid getting should should always disappear
         self.kill()
         # If we have the smallest asteroid, it is simply destroyed

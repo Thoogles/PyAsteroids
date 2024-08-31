@@ -1,6 +1,6 @@
 import pygame
 
-from constants import *
+from constants import *  # noqa: F403
 from player import Player, Shot
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
@@ -9,11 +9,11 @@ from asteroidfield import AsteroidField
 def main():
     # debug prints
     print("Starting asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
+    print(f"Screen width: {SCREEN_WIDTH}")  # noqa: F405
+    print(f"Screen height: {SCREEN_HEIGHT}")  # noqa: F405
     # Get the return codes for passing and failing modules while init
     rc = pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))  # noqa: F405
     clock = pygame.time.Clock()
     dt = 0
 
@@ -26,11 +26,12 @@ def main():
     # init player to center of screen
     Player.containers = (updatable, drawable)
     Shot.containers = (shots, drawable, updatable)
-    player_ship = Player(PLAYER_START_POS_X, PLAYER_START_POS_Y)
+    player_ship = Player(PLAYER_START_POS_X, PLAYER_START_POS_Y)  # noqa: F405
 
+    # Init asteroid objects
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = updatable
-    asteroid_field = AsteroidField()
+    asteroid_field = AsteroidField()  # noqa: F841
     while True:
         # Check for game close
         for event in pygame.event.get():
