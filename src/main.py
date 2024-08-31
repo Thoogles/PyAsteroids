@@ -27,7 +27,7 @@ def main():
     player_ship = Player(PLAYER_START_POS_X, PLAYER_START_POS_Y)
 
     Asteroid.containers = (asteroids, updatable, drawable)
-    AsteroidField.containers = (updatable)
+    AsteroidField.containers = updatable
     asteroid_field = AsteroidField()
     while True:
         # Check for game close
@@ -51,7 +51,7 @@ def main():
 
         # Updates the screen
         pygame.display.flip()
-        dt = clock.tick(60) / 1000    # convert dt to seconds
+        dt = clock.tick(60) / 1000  # convert dt to seconds
 
 
 if __name__ == "__main__":

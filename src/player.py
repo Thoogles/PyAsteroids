@@ -2,12 +2,13 @@ import pygame
 
 from circleshape import CircleShape
 from constants import (
-        PLAYER_RADIUS,
-        PLAYER_COLOR,
-        PLAYER_LINE_WIDTH,
-        PLAYER_TURN_SPEED,
-        PLAYER_SPEED,
-        )
+    PLAYER_RADIUS,
+    PLAYER_COLOR,
+    PLAYER_LINE_WIDTH,
+    PLAYER_TURN_SPEED,
+    PLAYER_SPEED,
+)
+
 
 class Player(CircleShape):
     def __init__(self, x: int, y: int):
