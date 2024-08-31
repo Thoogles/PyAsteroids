@@ -23,9 +23,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        # update ship rotation
+        player_ship.update(dt)
 
+        # Draw background and ship
         screen.fill("black")
         player_ship.draw(screen)
+
         # Updates the screen
         pygame.display.flip()
         dt = clock.tick(60) / 1000    # convert dt to seconds
